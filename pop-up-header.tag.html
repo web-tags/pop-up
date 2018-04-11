@@ -1,0 +1,63 @@
+<template>
+	<table id='header'><tr>
+		<td class='brand'><slot></slot></td>
+		<td class='title'></td>
+		<td class='close'><span on-tap='close'>&times;</span></td>
+	</tr></table> 
+</template>
+
+<script $>
+	set title(v){
+		console.log('title',v);
+		this.$('.title').innerHTML = v;
+	}
+</script>
+
+<style>
+	:host{
+		display: block;
+		/*--background: #333;*/
+		--color: white;
+		user-select: none;
+	}
+	:host([error]){
+		/*--background: darkred;*/
+		/*--color: red;*/
+	}
+	#header{
+		/*font: 20px 300 Quicksand;*/
+		/*background: var(--background);*/
+		color: var(--color);
+		padding: 5px 0;
+		margin:0;
+		width: 100%;
+		border-collapse: collapse;
+	}
+	#header .brand{
+		/*cursor: pointer;*/
+		width: 90px;
+		color: silver;
+		font-size: 17px;
+		padding-left:10px;
+		white-space: nowrap;
+	}
+	#header .brand:hover{
+		color: white;
+	}
+	#header .title{
+		text-align: center;
+		font-variant: small-caps;
+		font-size: 25px;
+	}
+	#header .close{
+		width: 100px;
+		text-align: right;
+		font-size: 30px;
+		color: silver;
+		padding-right:10px;
+	}
+	#header .close span:hover{
+		cursor: pointer;
+		color: white;
+	}
+</style>

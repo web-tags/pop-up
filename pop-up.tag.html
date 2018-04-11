@@ -1,0 +1,116 @@
+<link tag='pop-up.min.js'/> 
+<link tag='pop-up-header.tag.html'/> 
+<!-- <link tag='pop-up-bonk.tag.html'/>  -->
+      
+<template> 
+	<div id='fog' on-tap='close'></div>
+	<div id='dialog'>
+		<pop-up-header><slot name='brand'></slot></pop-up-header>
+		<div id='content'>
+			<slot></slot>
+		</div>
+	</div>
+</template>
+
+
+
+
+
+
+<script $ >
+	connectedCallback(){
+		this.hidden = true;
+		POPUP.register(this);
+		// this.$('pop-up-header').setTitle(this.getAttribute('title'))
+	}
+	show(){
+		this.hidden = false;
+	}
+	close(){
+		this.hidden = true;
+	}
+	static get observedAttributes() {
+		return ['title'];
+	} 
+	attributeChangedCallback(attr, oldVal, newVal) {
+		// console.log('pop',this.$('pop-up-header'),attr,newVal);
+		if(attr=='title') 
+			setTimeout(()=>this.$('pop-up-header').title = newVal,10);
+	}
+
+</script>
+
+
+
+
+
+
+
+
+<style>
+	:host{
+		position: absolute;
+		left:0; right:0;
+		top:0; bottom:0;
+		/*left:0; right:0;*/
+		/*top:0; bottom:0;*/
+
+		/*display: block;*/
+		text-align: center;
+  		/*border: 1px solid #333;*/
+		font-size: 20px;
+		/*width: 100%;*/
+		--corners: 3px;
+		/*--header-background: #333;*/
+	}
+	#fog{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+/*		position: absolute;
+		left:0; right:0;
+		top:0; bottom:0;
+*/		background: #ddd;
+		opacity: 0.9;
+	}
+	#dialog{
+		display: inline-block;
+		position: relative;
+		/*position: absolute;*/
+		/*left:0; right:0;*/
+		margin: 0 auto;
+		top: 2%;
+		/*top: 50%;*/
+	    /*transform: translateY(-50%);*/
+		/*vertical-align: middle;*/
+		width: 96%;
+		/*border: 1px dotted green;*/
+		/*left:0; right:0;*/
+		/*top:0; bottom:0;*/
+		/*position: relative;*/
+		z-index: 100;
+		background: white;
+		border-radius: 3px;
+		overflow: hidden;
+		/*vertical-align: middle;*/
+		/*padding-bottom: 7px;*/
+	}
+	#content{
+		margin: 10px;
+	}
+	@media (min-device-width: 600px) {
+		#dialog{
+			top: 20%;
+			width: 400px;
+		}
+	}
+
+	pop-up-header{
+		background: var(--header-background, #333);
+		/*background: #333;*/
+	}
+
+</style>
+
+
+

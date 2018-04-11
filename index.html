@@ -1,0 +1,43 @@
+<script src=' ../../JavaScript/tap.js/dist/tap.min.js'></script>
+<script src='dist/pop-up.tag.x.js'></script>
+<!-- <script src='dist/pop-up-header.tag.js'></script> -->
+<!-- <script src='dist/pop-up.min.js'></script> -->
+<script src='dist/but-ton.tag.js'></script>
+<script src='dist/test-tag.tag.js'></script>
+
+
+<but-ton on-tap='showA'>go</but-ton>
+<but-ton on-tap='showTest'>test</but-ton>
+
+<pop-up id='popA' title='head'>
+	<a slot='brand'>snip.yt</a>
+	DUDE
+	<but-ton on-tap='showB'>go B</but-ton>
+</pop-up>
+
+<pop-up id='popB' title='head2'>
+	<a slot='brand'>snip.yt</a>
+	<but-ton on-tap='POPUP.show' target='popA'>go B</but-ton>
+	manoman
+</pop-up>
+
+<test-tag></test-tag>
+
+
+<script>
+	showA = ()=>{
+		POPUP.show('popA')
+	}
+	showB = ()=>{
+		POPUP.show('popB')
+	}
+	showTest = ()=>{
+		POPUP.show('testPOP')
+	}
+
+
+</script>
+
+<style>
+	/*but-ton{font: 300 30px Helvetica ; }*/
+</style>

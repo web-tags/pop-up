@@ -1,0 +1,1 @@
+document.head.insertAdjacentHTML('beforeend', `<template id="test-tag"><pop-up id="testPOP">dumdi</pop-up></template>`);window.customElements.define('test-tag',class extends HTMLElement{constructor(){super(),this.attachShadow({mode:'open'}).appendChild(document.querySelector('template#test-tag').content.cloneNode(true));;}});
